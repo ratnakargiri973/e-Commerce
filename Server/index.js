@@ -4,11 +4,22 @@ import 'dotenv/config';
 import { connectToDB } from './db/connection.js';
 import userRouter from './Routes/userRoutes.js';
 import authRouter from './Routes/authRoute.js';
-
-
-const app = express();
+import cookieParser from 'cookie-parser';
 
 const PORT = process.env.PORT;
+
+const app = express();
+const corsOption = {
+    origin: process.env.NODE_ENV === "production" 
+            ? "https://your-frontend-domain.com" : 
+              "http://localhost:5173",
+    Credential: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+}
+
+app.use(cors(corsOption));
+app.use(cookieParser());
 
 
 app.use(express.urlencoded({extended: true}));
