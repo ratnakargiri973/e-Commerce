@@ -57,7 +57,7 @@ export const registerSeller = async (req, res) => {
         await userModel.findOneAndUpdate({ email }, { role: "seller" });
         await userModel.findOneAndUpdate({ email }, {username: username});
 
-        return res.status(200).send({ message: `Your status is now elevated to a seller` });
+        return res.status(201).send({ message: `Your status is now elevated to a seller` });
       } else {
         
         const password = await bcrypt.hash(req.body.password, 10);
@@ -145,39 +145,47 @@ export const logout = async (req, res) => {
     res.status(200).send({message: "User logged out successfully"});
 }
 
-export const update = async (req, res) => {
-    const {id} = req.params;
-
-    const {name, email, username, phone, password, role} = req.body;
-
+export const profile = async (req, res) => {
     try {
-        if(!id){
-            return res.status(400).send({message: "You must specify a User ID"});
+        const user = await userModel.findById(req.user._id).select("-password");
+
+        if(!user){
+            return res.status(404).send({message: "user not found"});
         }
 
-        if(!mongoose.Types.ObjectId.isValid(id)){
-            return res.status(400).send({message: "Given ID is not in proper format"});
-        }
-
-        const updateToUser = await userModel.findByIdAndUpdate(id, {
-            name,
-            email,
-            username,
-            password,
-            phone,
-            role
-        });
-
-        if(!updateToUser){
-            return res.status(404).send({message: "No user is found with that ID"});
-           };
-    
-           res.status(200).send({message: "Updated Successfully", updateToUser});
-        }
-        catch(err){
-            res.status(500).send({message: "Error in updating user", err});
-        }
+        res.status(200).json({
+            _id: user._id,
+            name: user.name,
+            email: user.email,
+            username: user.username,
+            phone: user.phone,
+            gender: user.gender,
+            createdAt: user.createdAt,
+            role: user.role,
+        })
+    } catch (error) {
+        res.status(500).send({message: "Server error while fetching profile"});
+    }
 }
+
+export const editProfile = async (req, res) => {
+    const { name, email, role, phone, username } = req.body;
+  
+    try {
+      await userModel.findByIdAndUpdate(req.user._id, {
+        name,
+        email,
+        role,
+        phone,
+        username,
+      });
+  
+      res.status(200).send({ message: "User Updated successfully" });
+    } catch (error) {
+      console.log(error);
+      return res.status(500).send({ message: "Error updating product", error });
+    }
+  };
 
 export const deleteUser = async (req, res) => {
     const {id} = req.params;

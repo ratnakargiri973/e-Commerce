@@ -6,6 +6,10 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterSeller from './pages/RegisterSeller';
 import VerifyEmail from './pages/VerifyEmail';
+import AuthProvider from './contexts/auth';
+import AddProduct from './pages/AddProduct';
+import ProtectedRoute from './components/ProtectedRoute';
+import Profile from './pages/Profile';
 
 function App() {
   const router = createBrowserRouter([
@@ -32,12 +36,30 @@ function App() {
         {
           path: '/verify-email',
           element: <VerifyEmail />
+        },
+        {
+          path: "/add-product",
+          element: (
+            <ProtectedRoute>
+                 <AddProduct />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/profile",
+          element: (
+            <ProtectedRoute>
+                 <Profile />
+            </ProtectedRoute>
+          )
         }
       ]
     }
   ])
   return (
-  <RouterProvider router={router}></RouterProvider>
+    <AuthProvider>
+         <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   )
 }
 

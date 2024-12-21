@@ -1,8 +1,10 @@
 import instance from '../axiosConfig.js';
 import React, { useState } from 'react'
 import {useNavigate, Link} from 'react-router-dom'
+import { useAuth } from '../contexts/auth.jsx';
 
 function Login() {
+  const { login } = useAuth();
   const [data, setData] = useState({
     username: "",
     password: "" 
@@ -26,7 +28,7 @@ function Login() {
       const response = await instance.post('/user/login', finalData);
   
       if(response.status === 200){
-        setMessage(response.data.message);
+        login();
         navigate('/');
       }
     } catch (error) {

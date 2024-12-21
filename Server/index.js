@@ -5,6 +5,7 @@ import { connectToDB } from './db/connection.js';
 import userRouter from './Routes/userRoutes.js';
 import authRouter from './Routes/authRoute.js';
 import cookieParser from 'cookie-parser';
+import productRouter from './Routes/productRoute.js';
 
 const PORT = process.env.PORT;
 
@@ -28,6 +29,7 @@ app.use(express.json());
 
 app.use('/api/v1/user', userRouter);
 app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/product', productRouter)
 
 await connectToDB();
 app.listen(PORT, () => {
