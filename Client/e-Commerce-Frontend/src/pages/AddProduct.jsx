@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import instance from "../axiosConfig";
 
 function AddProduct() {
@@ -65,12 +65,32 @@ function AddProduct() {
     const response = await instance.post("/product/add", formdata);
     setMessage(response.data.message)
     console.log(response);
+    setData({
+      name: "",
+      brand: "",
+      category: "",
+      price: "",
+      description: "",
+      attributes: [{ name: "", value: "" }],
+      inStock: "",
+      inventory: "",
+      image: "",
+    });
   }
 
+  useEffect(() => {
+    if (message) {
+      const timeout = setTimeout(() => setMessage(""), 3000);
+      return () => clearTimeout(timeout);
+    }
+  }, [message]);
+
   return (
+    <>
+    {message.length > 0 ? (<h2 className="font-bold text-4xl text-green-700 pt-20">Thank You, {message}</h2>):(
+   <>
     <div className="w-full h-full flex flex-col gap-4 py-4 mb-36 justify-around items-center">
       <h2 className="font-bold text-2xl">Add Products</h2>
-      {message.length > 0 ? (<h2 className="font-bold text-2xl text-white">{message}</h2>):(
       <form action="" 
            onSubmit={handleSubmit} 
            encType="multipart/form-data"
@@ -188,8 +208,10 @@ function AddProduct() {
         <input type="file" name="image" onChange={handleChange}  className="rounded p-1.5 border-none outline-none bg-gray-200 w-full focus:shadow-md focus:shadow-lime-400"/> <br />
         <button type="submit" className="p-2 rounded bg-rose-400 text-white font-bold hover:bg-rose-900 w-full">Add Product</button>
       </form>
+      </div>
+      </>
       )}
-    </div>
+    </>
   );
 }
 

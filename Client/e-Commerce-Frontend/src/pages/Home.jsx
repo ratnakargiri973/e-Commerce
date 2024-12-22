@@ -5,13 +5,18 @@ import ProductCard from '../components/ProductCard';
 function Home() {
   const [products, setProducts] = useState([]);
 
+
   useEffect(() => {
     fetchData();
   }, []);
 
   async function fetchData(){
-    const response = await instance.get('/product/get');
-    setProducts(response.data.products);
+    try {
+      const response = await instance.get("/product/get");
+      setProducts(response.data.products);
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
   }
   return (
     <div className='w-full flex justify-around items-start gap-4 p-8 flex-wrap'>
@@ -21,6 +26,7 @@ function Home() {
         })
 
       }
+
     </div>
   )
 }
