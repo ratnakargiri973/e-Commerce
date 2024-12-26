@@ -4,7 +4,8 @@ import { useAuth } from '../contexts/auth';
 import { CgProfile } from "react-icons/cg";
 
 function Header() {
-  const { isAuthenticated, logout } = useAuth();
+  const { isAuthenticated,user, logout, loading } = useAuth();
+
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
 

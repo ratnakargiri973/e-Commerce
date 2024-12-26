@@ -72,3 +72,34 @@ export async function getProducts(req, res){
     res.status(500).send({message: "Error fetching products", error})
    }
   }
+
+  export const getProduct = async  (req, res) => {
+    const keyword = req.params.id;
+    let productToFind;
+    try {
+      if (!keyword)
+        return res
+          .status(400)
+          .send({ message: "Provide an ID to find a product" });
+  
+      if (mongoose.Types.ObjectId.isValid(keyword))
+        productToFind = await Products.findById(keyword);
+      else {
+        productToFind = await Products.find({ uid: keyword });
+      }
+  
+      if (!productToFind)
+        return res
+          .status(400)
+          .send({ message: "No Products found with given ID" });
+  
+      res.send(productToFind);
+    } catch (error) {
+      res.status(500).send({ message: "Error fetching product", error });
+    }
+  }
+
+  // export const editProduct = async (req, res) => {
+  //   const { id } = req.params;
+  //   const {}
+  // }

@@ -210,3 +210,47 @@ export const deleteUser = async (req, res) => {
          res.status(500).send({message: "Error deleting user", error});
     }
 }
+
+export const addToWishlist = async (req, res) => {
+  try {
+    const { productId } = req.body;
+    const userId= req.user._id;
+
+    const user = await userModel.findById(userId);
+
+    if(user.wishlist.includes(productId)){
+      return res.status(400).json({message: "product already in wishlist"});
+    }
+
+    await userModel.findByIdAndUpdate(userId, {
+      $push: {wishlist: productId},
+    });
+
+    res.status(200).json({message: "Added to wishlist successfully"});
+  } catch (error) {
+    res.status(500).json({message: "Error adding to wishlist"});
+  }
+}
+
+export const removeFromWishlist = async (req, res) => {
+  try {
+      const { id } = req.params; 
+      const userId = req.user._id;          
+
+      const user = await userModel.findById(userId);
+
+      
+      if (!user.wishlist.includes(id)) {
+          return res.status(400).send({ message: "Product not found in wishlist" });
+      }
+
+      
+      await userModel.findByIdAndUpdate(userId, {
+          $pull: { wishlist: id },
+      });
+
+      res.status(200).send({ message: "Removed from wishlist successfully" });
+  } catch (error) {
+      res.status(500).send({ message: "Error in removing from wishlist" });
+  }
+};

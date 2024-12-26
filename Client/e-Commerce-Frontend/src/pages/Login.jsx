@@ -1,10 +1,10 @@
 import instance from '../axiosConfig.js';
-import React, { useState } from 'react'
-import {useNavigate, Link} from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import {useNavigate, Link, useSearchParams} from 'react-router-dom'
 import { useAuth } from '../contexts/auth.jsx';
 
 function Login() {
-  const { login } = useAuth();
+  const { login, isAuthenticated } = useAuth();
   const [data, setData] = useState({
     username: "",
     password: "" 
@@ -12,6 +12,15 @@ function Login() {
   const [message, setMessage] = useState("");
 
   const navigate = useNavigate();
+
+  const [searchParams] = useSearchParams();
+
+  useEffect(()=>{
+    if(isAuthenticated){
+      const referer = searchParams.get("referer");
+      if(referer) navigate(referer);
+    }
+  }, [isAuthenticated, navigate, searchParams]);
 
   function handleChange(e){
     const {name, value} = e.target;

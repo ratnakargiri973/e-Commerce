@@ -6,8 +6,13 @@ const AuthContext = createContext(null);
 
 
 function AuthProvider({children}) {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setIsLoading] = useState(true);
+
+  const [authState, setAuthState] = useState({
+    isAuthenticated: false,
+    user: null,
+    loading: true,
+    error: null,
+  });
 
   useEffect(() => {
     checkAuth();
@@ -19,51 +24,67 @@ function AuthProvider({children}) {
         withCredentials: true,
       });
 
-      console.log(response);
-      setIsAuthenticated(true);
+      setAuthState({
+        isAuthenticated: true,
+        user: response.data.user,
+        loading: false,
+        error: null,
+      });
     } catch (error) {
-      setIsAuthenticated(false);
+      setAuthState({
+        isAuthenticated: false,
+        user: null,
+        loading: false,
+        error: error.response.data.message,
+      });
     }
   }
 
-  function login(){
-    setIsAuthenticated(true);
+  function login(userData){
+    setAuthState({
+      isAuthenticated: true,
+      user: userData,
+      loading: false,
+      error: null,
+    });
   }
 
-  function authenticate(){
-    setIsAuthenticated(true);
-  }
-
-  function deAuthenticate() {
-    setIsAuthenticated(false);
-  }
 
   async function logout() {
     try {
-      const response = await instance.post("/user/logout", {
+      const response = await instance.post("/user/logout",
+        {},
+         {
         withCredentials: true,
       });
 
-      if(response.status === 200){
-        setIsAuthenticated(false);
-      }
+      setAuthState({
+        isAuthenticated: false,
+        user: null,
+        loading: false,
+        error: null,
+      });
     } catch (error) {
-      console.log(error)
-    } finally {
-      setIsAuthenticated(false);
-      window.location.href = "/";
-    }
+      setAuthState({
+        isAuthenticated: false,
+        user: null,
+        loading: false,
+        error: error.response.data.message,
+      });
+    } 
+  }
+
+  function updateUser(userData){
+    setAuthState({...authState, user: userData});
   }
 
   return (
    <AuthContext.Provider
      value={{
-         isAuthenticated,
-         loading,
+         ...authState,
          login,
          logout,
-         authenticate,
-         deAuthenticate,
+        updateUser,
      }}>
       {children}
    </AuthContext.Provider>

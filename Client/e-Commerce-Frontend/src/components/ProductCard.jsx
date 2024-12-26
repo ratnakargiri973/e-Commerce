@@ -1,9 +1,11 @@
 import React from 'react'
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { Link } from "react-router-dom";
+import useWishlist from '../hooks/useWishlist.jsx';
 
 
 function ProductCard({product}) {
+  const { toggleWishlist, isInWishlist, loading } = useWishlist();
   return (
     <div className="w-1/6 h-78 flex flex-col shadow-md bg-zinc-400 rounded-xl pb-4">
       <div className="w-full h-1/2 rounded-xl">
@@ -15,9 +17,14 @@ function ProductCard({product}) {
         <p className="price flex justify-center items-center">
           <LiaRupeeSignSolid /> {product.price}
         </p>
-        <Link to="" className='p-2 bg-yellow-300 rounded-lg hover:bg-yellow-200'>
-          Add To Cart
-        </Link>
+        <button
+         onClick={() => toggleWishlist(product._id)}
+         className='bg-yellow-300 text-white px-2 py-1 rounded'
+         disabled={loading}>
+          {isInWishlist(product._id)
+           ? "Remove from wishlist"
+           : "Add to Wishlist" }
+        </button>
       </div>
     </div>
   )
