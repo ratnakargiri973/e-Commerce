@@ -19,7 +19,7 @@ function ProductCard({product}) {
         </p>
         <button
          onClick={() => toggleWishlist(product._id)}
-         className='bg-yellow-300 text-white px-2 py-1 rounded'
+         className='bg-yellow-300 text-black text-xs px-3 py-1 rounded-2xl'
          disabled={loading}>
           {isInWishlist(product._id)
            ? "Remove from wishlist"
