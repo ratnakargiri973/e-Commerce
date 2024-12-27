@@ -1,5 +1,6 @@
 import Products from "../Models/productModel.js";
 import { uploadToCloudinary } from "../utils/cloudinary.js";
+import mongoose from "mongoose";
 
 
 
@@ -73,7 +74,8 @@ export async function getProducts(req, res){
    }
   }
 
-  export const getProduct = async  (req, res) => {
+
+  export async function getProduct(req, res) {
     const keyword = req.params.id;
     let productToFind;
     try {
@@ -82,11 +84,12 @@ export async function getProducts(req, res){
           .status(400)
           .send({ message: "Provide an ID to find a product" });
   
-      if (mongoose.Types.ObjectId.isValid(keyword))
+      if (mongoose.Types.ObjectId.isValid(keyword)) {
         productToFind = await Products.findById(keyword);
-      else {
+      } else {
         productToFind = await Products.find({ uid: keyword });
       }
+      // console.log("productToFind", productToFind);
   
       if (!productToFind)
         return res
@@ -95,11 +98,8 @@ export async function getProducts(req, res){
   
       res.send(productToFind);
     } catch (error) {
-      res.status(500).send({ message: "Error fetching product", error });
+      res
+        .status(500)
+        .send({ message: "Error fetching product", error: error.message });
     }
   }
-
-  // export const editProduct = async (req, res) => {
-  //   const { id } = req.params;
-  //   const {}
-  // }

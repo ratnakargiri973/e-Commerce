@@ -10,6 +10,9 @@ import AuthProvider from './contexts/auth';
 import AddProduct from './pages/AddProduct';
 import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/Profile';
+import SingleProduct from './pages/SingleProduct';
+import Cart from './pages/Cart';
+
 
 function App() {
   const router = createBrowserRouter([
@@ -50,6 +53,18 @@ function App() {
           element: (
             <ProtectedRoute>
                  <Profile />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/product/:id",
+          element: <SingleProduct />
+        },
+        {
+          path: "/cart",
+          element: (
+            <ProtectedRoute>
+              <Cart />
             </ProtectedRoute>
           )
         }

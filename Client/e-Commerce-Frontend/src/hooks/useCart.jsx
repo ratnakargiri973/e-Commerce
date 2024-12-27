@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from "../contexts/Auth.jsx"
+import { useAuth } from '../contexts/auth.jsx';
 import { useNavigate } from 'react-router-dom';
 import instance from '../axiosConfig.js';
 
@@ -54,7 +54,7 @@ function useCart() {
      }
   }
 
-  async function removefromCart(productId){
+  async function removeFromCart(productId){
     try {
         const response = await instance.delete('/cart/remove/' +productId);
         setCart(response.data.cart);
@@ -62,7 +62,7 @@ function useCart() {
         console.error("Error removing from cart");
     }
   }
-  return { addToCart, cart, fetchCart, updateQuantity, removefromCart};
+  return { addToCart, cart, fetchCart, updateQuantity, removeFromCart};
 }
 
-export default useCart
+export default useCart;

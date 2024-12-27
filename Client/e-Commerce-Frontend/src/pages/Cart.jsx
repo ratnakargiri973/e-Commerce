@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useEffect} from 'react'
 import useCart from '../hooks/useCart.jsx'
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { Link } from 'react-router-dom';
@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 function Cart() {
   const {cart, fetchCart, updateQuantity, removeFromCart } = useCart();
 
+
+  useEffect(() => {
+    fetchCart();
+  }, []);
 
   if(!cart || cart?.items?.length === 0){
     return(
