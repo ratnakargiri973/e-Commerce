@@ -12,13 +12,23 @@ import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/Profile';
 import SingleProduct from './pages/SingleProduct';
 import Cart from './pages/Cart';
+import CartProvider from './contexts/CartProvider';
+import CreateCoupons from './pages/CreateCoupons';
+import MyCoupons from './pages/MyCoupons';
 
+function AppWrapper(){
+  return (
+    <CartProvider>
+      <First />
+    </CartProvider>
+  )
+}
 
 function App() {
   const router = createBrowserRouter([
     {
       path: '/',
-      element: <First />,
+      element: <AppWrapper />,
       children: [
         {
           index: true,
@@ -67,13 +77,29 @@ function App() {
               <Cart />
             </ProtectedRoute>
           )
+        },
+        {
+          path: "/my-coupons",
+          element: (
+            <ProtectedRoute>
+              <MyCoupons />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/my-coupons/add",
+          element: (
+            <ProtectedRoute>
+              <CreateCoupons />
+            </ProtectedRoute>
+          )
         }
       ]
     }
   ])
   return (
     <AuthProvider>
-         <RouterProvider router={router}></RouterProvider>
+         <RouterProvider router={router} />
     </AuthProvider>
   )
 }

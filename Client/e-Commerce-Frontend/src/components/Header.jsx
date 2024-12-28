@@ -13,7 +13,7 @@ function Header() {
 
   useEffect(() => {
     if (isAuthenticated) fetchCart();
-  }, [isAuthenticated, fetchCart]);
+  }, [isAuthenticated]);
 
   async function handleLogout() {
     await logout();

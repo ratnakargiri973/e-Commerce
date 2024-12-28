@@ -2,6 +2,7 @@ import React , {useEffect} from 'react'
 import useCart from '../hooks/useCart.jsx'
 import { LiaRupeeSignSolid } from "react-icons/lia";
 import { Link } from 'react-router-dom';
+import ApplyCoupon from '../components/ApplyCoupon.jsx';
 
 function Cart() {
   const {cart, fetchCart, updateQuantity, removeFromCart } = useCart();
@@ -83,6 +84,9 @@ function Cart() {
       <div className="lg:col-span-1">
         <div className="border rounded-lg p-4 sticky top-4">
           <h2 className="text-xl font-bold mb-4">Order Summary</h2>
+          
+          <ApplyCoupon/>
+
           <div className="space-y-2 pb-4 border-b">
             <div className="flex justify-between">
               <span>Subtotal</span>
@@ -91,6 +95,14 @@ function Cart() {
                 {cart.totalAmount.toFixed(2)}
               </span>
             </div>
+
+            {cart.discountAmount > 0 && (
+                <div className="flex justify-between text-green-500">
+                  <span>Discount</span>
+                  <span>- {cart.discountAmount}</span>
+                </div>
+              )}
+              
             <div className="flex justify-between">
               <span>Shipping</span>
               <span>Free</span>

@@ -52,6 +52,9 @@ function Profile() {
             <li className='w-full py-2 px-2 shadow-md'>
                 <Link className='flex justify-between w-full '><span>Wishlist</span> <FaAngleRight /> </Link>
             </li>
+            <li className='w-full py-2 px-2 shadow-md'>
+                <Link className='flex justify-between w-full ' to="/my-coupons"><span>My Coupons</span> <FaAngleRight /> </Link>
+            </li>
             {data.role === "seller" && (
             <li className='w-full py-2 px-2 shadow-md'>
                 <Link to={`/my-products/${data._id}`} className='flex justify-between w-full '><span>My Products</span> <FaAngleRight /> </Link>
