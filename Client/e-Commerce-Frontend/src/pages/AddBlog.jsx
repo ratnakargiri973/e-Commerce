@@ -42,7 +42,7 @@ function AddBlog() {
         type="text"
         value={formData.title}
         onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-        className="w-full border p-2 rounded"
+        className="w-full border-none outline-none p-2 rounded"
         required
       />
     </div>
@@ -55,7 +55,7 @@ function AddBlog() {
         onChange={(e) =>
           setFormData({ ...formData, content: e.target.value })
         }
-        className="w-full border p-2 rounded"
+        className="w-full border-none outline-none p-2 rounded"
         required
       ></textarea>
     </div>
