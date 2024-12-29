@@ -6,7 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterSeller from './pages/RegisterSeller';
 import VerifyEmail from './pages/VerifyEmail';
-import AuthProvider from './contexts/auth';
+// import AuthProvider from './contexts/auth';
 import AddProduct from './pages/AddProduct';
 import ProtectedRoute from './components/ProtectedRoute';
 import Profile from './pages/Profile';
@@ -17,6 +17,7 @@ import CreateCoupons from './pages/CreateCoupons';
 import MyCoupons from './pages/MyCoupons';
 import Blogs from './pages/Blogs';
 import AddBlog from './pages/AddBlog';
+import { AuthProvider } from './contexts/auth';
 
 function AppWrapper(){
   return (

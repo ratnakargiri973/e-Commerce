@@ -5,7 +5,7 @@ const AuthContext = createContext(null);
 
 
 
-function AuthProvider({children}) {
+export function AuthProvider({children}) {
 
   const [authState, setAuthState] = useState({
     isAuthenticated: false,
@@ -90,8 +90,6 @@ function AuthProvider({children}) {
    </AuthContext.Provider>
   )
 }
-
-export default AuthProvider;
 
 export  function useAuth() {
   const context = useContext(AuthContext);
