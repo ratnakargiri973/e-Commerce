@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-import Coupon from '../Models/couponmodel.js';
+import Coupon from '../Models/couponModel.js';
 import Cart from '../Models/cartModel.js';
 
 export const createCoupon = async (req, res) => {
