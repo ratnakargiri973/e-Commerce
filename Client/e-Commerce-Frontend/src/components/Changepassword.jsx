@@ -15,22 +15,24 @@ function Changepassword() {
       navigate("/login");
     };
   return (
-    <div>
+    <div className='w-full h-full flex flex-col justify-center items-center'>
       <h2>Change Password</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className='flex gap-2 justify-center items-center'>
         <input
           type="text"
           placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+           className='border-none outline-none p-2 rounded'
         />
         <input
           type="password"
           placeholder="Enter new password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+           className='border-none outline-none p-2 rounded'
         />
-        <button type="submit">Change Password</button>
+        <button type="submit" className='p-2 rounded bg-blue-500 text-white'>Change Password</button>
       </form>
       {message && <p>{message}</p>}
     </div>

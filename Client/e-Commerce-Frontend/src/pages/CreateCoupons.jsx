@@ -43,8 +43,9 @@ function CreateCoupons() {
       <input
         type="text"
         value={formData.name}
+        placeholder='Coupon Name'
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="w-full border p-2 rounded"
+        className="w-full  p-2 rounded border-none outline none"
         required
       />
     </div>
@@ -54,10 +55,11 @@ function CreateCoupons() {
       <input
         type="text"
         value={formData.code}
+        placeholder='Coupon Code'
         onChange={(e) =>
           setFormData({ ...formData, code: e.target.value.toUpperCase() })
         }
-        className="w-full border p-2 rounded"
+        className="w-full  p-2 rounded border-none outline-none"
         required
       />
     </div>
@@ -67,10 +69,11 @@ function CreateCoupons() {
       <input
         type="number"
         value={formData.minPrice}
+        placeholder='Minimum Price'
         onChange={(e) =>
           setFormData({ ...formData, minPrice: e.target.value })
         }
-        className="w-full border p-2 rounded"
+        className="w-full p-2 rounded border-none outline-none"
         required
       />
     </div>
@@ -80,10 +83,11 @@ function CreateCoupons() {
       <input
         type="number"
         value={formData.discountPercentage}
+        placeholder='Discount Percentage'
         onChange={(e) =>
           setFormData({ ...formData, discountPercentage: e.target.value })
         }
-        className="w-full border p-2 rounded"
+        className="w-full  p-2 rounded border-none outline-none"
         min="0"
         max="100"
         required

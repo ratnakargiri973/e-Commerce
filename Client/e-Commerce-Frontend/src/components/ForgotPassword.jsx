@@ -17,8 +17,7 @@ function ForgotPassword() {
     };
     
   return (
-    <div>
-       <div>
+    <div className='w-full h-full flex flex-col justify-center items-center'>
       <h2>Forgot Password</h2>
       <form onSubmit={handleSubmit}>
         <input
@@ -26,11 +25,11 @@ function ForgotPassword() {
           placeholder="Enter your username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          className='border-none outline-none p-2 rounded'
         />
-        <button type="submit">Send OTP</button>
+        <button type="submit" className='p-2 rounded bg-blue-500 text-white'>Send OTP</button>
       </form>
       {message && <p>{message}</p>}
-    </div>
     </div>
   )
 }
