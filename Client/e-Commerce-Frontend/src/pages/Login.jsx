@@ -81,6 +81,7 @@ function Login() {
 
               <button type='submit'  className="p-2 rounded bg-cyan-600 text-white font-bold hover:bg-sky-400">Log In</button>
       </form>
+      <Link to="/forgot-password">Forgot Password</Link>
       <p>
         New User? <Link to="/register" className="text-indigo-800">Register</Link>
       </p>
