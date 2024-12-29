@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useAuth } from '../contexts/auth.jsx'
+import { useAuth } from '../contexts/Auth.jsx'
 import instance from '../axiosConfig';
 import { Link } from 'react-router-dom';
 

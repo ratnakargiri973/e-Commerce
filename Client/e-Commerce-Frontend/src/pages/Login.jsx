@@ -1,7 +1,7 @@
 import instance from '../axiosConfig.js';
 import React, { useEffect, useState } from 'react'
 import {useNavigate, Link, useSearchParams} from 'react-router-dom'
-import { useAuth } from '../contexts/auth.jsx';
+import { useAuth } from '../contexts/Auth.jsx';
 
 function Login() {
   const { login, isAuthenticated } = useAuth();

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import instance from '../axiosConfig.js';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '../contexts/auth.jsx';
+import { useAuth } from '../contexts/Auth.jsx';
 
 function ProtectedRoute({children}) {
 

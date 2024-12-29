@@ -16,7 +16,7 @@ import CreateCoupons from './pages/CreateCoupons';
 import MyCoupons from './pages/MyCoupons';
 import Blogs from './pages/Blogs';
 import AddBlog from './pages/AddBlog';
-import { AuthProvider } from './contexts/auth.jsx';
+import { AuthProvider } from './contexts/Auth.jsx';
 
 function AppWrapper(){
   return (
