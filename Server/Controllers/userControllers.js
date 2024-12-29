@@ -3,6 +3,8 @@ import userModel from "../Models/userModel.js";
 import bcrypt from 'bcrypt';
 import { sendVerificationEmail } from "../utils/verification.js";
 import jwt from 'jsonwebtoken';
+import { generateOtp } from '../utils/generateOtp.js';
+import { sendMail } from "../utils/sendMail.js";
 
 
 export const register = async (req, res) => {
@@ -254,3 +256,88 @@ export const removeFromWishlist = async (req, res) => {
       res.status(500).send({ message: "Error in removing from wishlist" });
   }
 };
+
+
+export async function forgotPassword(req, res) {
+  const { username } = req.body;
+
+  if (!username) {
+      return res.status(400).json({ error: 'username is required' });
+  }
+  const user = await userModel.findOne({username: username});
+  if(!user){
+      return res.status(404).json({error: 'User is not found'});
+  }
+
+  try {
+      const subject = 'Reset Password';
+      const body = generateOtp();
+      const otp = body;
+      await sendMail(process.env.USER_EMAIL, process.env.USER_PASSWORD, user.email, subject, body);
+      await updateOtp(user._id, otp);
+      res.status(200).json({ message: 'Password reset email sent successfully' });
+  } catch (error) {
+      console.error('Error sending email:', error);
+      res.status(500).json({ error: 'Failed to send password reset email' });
+  }
+}
+
+export async function verifyOtp(req, res){
+  const {username, otp} = req.body;
+  const user = await userModel.findOne({username: username});
+  if(!user){
+      return res.status(401).json({message: "User not found"});
+  }
+  if(user.otp === otp && Date.now() < user.validFor){
+      user.isOtpVerified= true;
+      user.save();
+      res.status(200).json({message: 'OTP is verified successfully'});
+  }
+  else{
+      res.status(401).json({message: 'Invalid Otp'});
+  }
+}
+
+
+export async function changePassword(req, res){
+  const {username, password} = req.body;
+  
+  const user = await userModel.findOne({username: username});
+  if(!user){
+      res.status(401).json({message: "User not found"});
+  }
+
+  if(!user.isOtpVerified){
+    return res.status(400).json({message: "OTP verifucation is required"});
+  }
+
+  const hashPassword = await bcrypt.hash(password, 10);
+  await userModel.findByIdAndUpdate(
+      user._id,
+      {password: hashPassword},
+      {new: true, upsert: false}
+ );
+ res.status(200).json({message: 'Password updated successfully'});
+}
+
+async function updateOtp(userId, otp){
+  try {
+      const validFor = Date.now() + 5 * 60 * 1000;
+      const updatedUser = await userModel.findByIdAndUpdate(
+           userId,
+           {otp, validFor, isOtpVerified: false},
+           {new: true, upsert: false}
+      );
+
+      if(!updatedUser){
+          res.status(401).json({message: "User not found"});
+          return null;
+          
+      }
+      return updatedUser;
+  } catch (error) {
+      console.error('Error updating OTP: ', error);
+      throw error;
+  }
+}
+

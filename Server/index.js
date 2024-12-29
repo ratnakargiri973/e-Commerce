@@ -8,6 +8,10 @@ import cookieParser from 'cookie-parser';
 import productRouter from './Routes/productRoute.js';
 import cartRouter from './Routes/cartRoute.js';
 import couponRouter from './Routes/couponRoute.js';
+import blogRouter from './Routes/blogRoute.js';
+import brandRouter from './Routes/brandRoute.js';
+import categoryRouter from './Routes/categoryRoute.js';
+
 
 const PORT = process.env.PORT;
 
@@ -34,6 +38,9 @@ app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/product', productRouter);
 app.use('/api/v1/cart', cartRouter);
 app.use('/api/v1/coupon', couponRouter);
+app.use('/api/v1/blog', blogRouter);
+app.use('/api/v1/brand', brandRouter);
+app.use("/api/v1/category", categoryRouter);
 
 await connectToDB();
 app.listen(PORT, () => {

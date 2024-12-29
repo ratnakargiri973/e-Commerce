@@ -61,6 +61,11 @@ function Header() {
             Register as a Seller
           </Link>
         </li>
+        <li>
+          <Link to="/blogs" className="hover:text-gray-300">
+            Blogs
+          </Link>
+        </li>
 
         {!isAuthenticated ? (
           <li>

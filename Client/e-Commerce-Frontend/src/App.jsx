@@ -15,6 +15,8 @@ import Cart from './pages/Cart';
 import CartProvider from './contexts/CartProvider';
 import CreateCoupons from './pages/CreateCoupons';
 import MyCoupons from './pages/MyCoupons';
+import Blogs from './pages/Blogs';
+import AddBlog from './pages/AddBlog';
 
 function AppWrapper(){
   return (
@@ -91,6 +93,18 @@ function App() {
           element: (
             <ProtectedRoute>
               <CreateCoupons />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/blogs",
+          element: <Blogs />
+        },
+        {
+          path: "/blogs/add",
+          element: (
+            <ProtectedRoute>
+              <AddBlog />
             </ProtectedRoute>
           )
         }
