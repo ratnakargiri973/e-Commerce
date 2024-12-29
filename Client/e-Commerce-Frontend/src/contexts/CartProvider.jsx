@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
-import { useAuth } from './auth';
+import { useAuth } from './auth.jsx';
 import { useLocation, useNavigate } from 'react-router-dom';
 import instance from '../axiosConfig';
 
