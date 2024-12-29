@@ -11,7 +11,7 @@ function ForgotPassword() {
   
     const handleSubmit = async (e) => {
       e.preventDefault();
-      const response = await instance.post('/user/forgot-password', username);
+      const response = await instance.post('/user/forgot-password', {username});
       setMessage(response.message || response.error);
       navigate('/verify-otp');
     };
