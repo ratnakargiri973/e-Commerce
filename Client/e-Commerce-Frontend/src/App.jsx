@@ -17,6 +17,9 @@ import MyCoupons from './pages/MyCoupons';
 import Blogs from './pages/Blogs';
 import AddBlog from './pages/AddBlog';
 import { AuthProvider } from './contexts/Auth.jsx';
+import ForgotPassword from './components/ForgotPassword.jsx';
+import VerifyOtp from './components/VerifyOtp.jsx';
+import Changepassword from './components/Changepassword.jsx';
 
 function AppWrapper(){
   return (
@@ -51,6 +54,18 @@ function App() {
         {
           path: '/verify-email',
           element: <VerifyEmail />
+        },
+        {
+          path: "/forgot-password",
+          element: <ForgotPassword />
+        },
+        {
+          path: "/verify-otp",
+          element: <VerifyOtp />
+        },
+        {
+          path: "/change-password",
+          element: <Changepassword />
         },
         {
           path: "/add-product",
