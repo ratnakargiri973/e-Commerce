@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/auth";
+import { useAuth } from "../contexts/auth.jsx";
 import { CgProfile } from "react-icons/cg";
 import useCart from "../hooks/useCart";
 
