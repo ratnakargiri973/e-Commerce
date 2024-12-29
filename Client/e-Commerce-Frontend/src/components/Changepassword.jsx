@@ -16,7 +16,7 @@ function Changepassword() {
     };
   return (
     <div className='w-full h-full flex flex-col justify-center items-center'>
-      <h2>Change Password</h2>
+      <h2 className='font-bold text-2xl'>Change Password</h2>
       <form onSubmit={handleSubmit} className='flex gap-2 justify-center items-center'>
         <input
           type="text"

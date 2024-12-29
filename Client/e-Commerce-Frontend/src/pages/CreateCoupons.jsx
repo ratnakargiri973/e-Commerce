@@ -45,7 +45,7 @@ function CreateCoupons() {
         value={formData.name}
         placeholder='Coupon Name'
         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-        className="w-full  p-2 rounded border-none outline none"
+        className="w-full  p-2 rounded border-none outline-none"
         required
       />
     </div>
