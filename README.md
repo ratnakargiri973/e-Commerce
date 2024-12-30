@@ -20,8 +20,9 @@
    **PRODUCT API**
      - <https://e-commerce-8xmf.onrender.com/api/v1/product/add>
      - <https://e-commerce-8xmf.onrender.com/api/v1/product/get>
+        ***products**
           {
-      "_id": "67670e30c555a41130542bf4",
+    -  "_id": "67670e30c555a41130542bf4",
       "name": "TUF Gaming F15",
       "brand": "ASUS",
       "category": "Laptop",
