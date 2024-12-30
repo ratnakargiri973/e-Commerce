@@ -22,7 +22,7 @@
      - <https://e-commerce-8xmf.onrender.com/api/v1/product/get>
      - <https://e-commerce-8xmf.onrender.com/api/v1/product/get/:id>
 
-       ***products**
+     -  ***products**
           {
     -  "_id": "67670e30c555a41130542bf4",
       "name": "TUF Gaming F15",
