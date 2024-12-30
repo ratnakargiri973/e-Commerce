@@ -1,6 +1,6 @@
 # E-COMMERCE API
-- [WEBSITE-HOSTED LINK](https://e-commerce-1-34e1.onrender.com/)
-   **USER API**
+ [WEBSITE-HOSTED LINK](https://e-commerce-1-34e1.onrender.com/)
+   ### USER API
    1. User Authentication
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/register>
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/register-seller>
