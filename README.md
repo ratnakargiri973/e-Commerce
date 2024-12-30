@@ -31,6 +31,28 @@
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand>
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand/edit/:brandId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand/delete/:brandId>
+
+      {
+  "message": "Success",
+  "brands": [
+    {
+      "_id": "67712d82fa766ac57f2d2f01",
+      "name": "vfaesh",
+      "description": "wfahcj",
+      "createdAt": "2024-12-29T11:07:46.668Z",
+      "updatedAt": "2024-12-29T11:07:46.668Z",
+      "__v": 0
+    },
+    {
+      "_id": "677130587fa48f54acd67332",
+      "name": "vsndZlxk",
+      "description": "WHKASJ",
+      "createdAt": "2024-12-29T11:19:52.748Z",
+      "updatedAt": "2024-12-29T11:19:52.748Z",
+      "__v": 0
+    }
+  ]
+}
   ### CART API
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart>
