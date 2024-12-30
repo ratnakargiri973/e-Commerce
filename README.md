@@ -17,26 +17,26 @@
    4. Wishlist
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/wishlist/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/wishlist/remove/:id>
-  **COUPON API**
+  ### COUPON API
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/apply>
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon>
-  **CATEGORY API**
+  ### CATEGORY API
       - <https://e-commerce-8xmf.onrender.com/api/v1/category/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/category>
       - <https://e-commerce-8xmf.onrender.com/api/v1/category/edit/:categoryId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/category/delete/:categoryId>
-  **BRANDS API**
+  ### BRANDS API
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand>
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand/edit/:brandId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/brand/delete/:brandId>
-  **CART API**
+  ### CART API
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart>
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart/quantity>
       - <https://e-commerce-8xmf.onrender.com/api/v1/cart/remove/:productId>
-  **BLOGS API**
+  ### BLOGS API
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/like/:blogId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/comment/:blogId>
@@ -45,11 +45,11 @@
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/delete/:blogId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/:blogId/comment/delete/:commentId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/:blogId/comment/edit/:commentId>
-   **TOKEN VERIFICATION API**
+   ### TOKEN VERIFICATION API
       - <https://e-commerce-8xmf.onrender.com/api/v1/auth/verify-token>
       - <https://e-commerce-8xmf.onrender.com/api/v1/auth/validate-token>
 
-   **PRODUCT API**
+   ### PRODUCT API
       - <https://e-commerce-8xmf.onrender.com/api/v1/product/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/product/get>
       - <https://e-commerce-8xmf.onrender.com/api/v1/product/get/:id>
