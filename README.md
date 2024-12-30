@@ -45,6 +45,58 @@
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/delete/:blogId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/:blogId/comment/delete/:commentId>
       - <https://e-commerce-8xmf.onrender.com/api/v1/blog/:blogId/comment/edit/:commentId>
+
+      {
+  "message": "Success",
+  "blogs": [
+    {
+      "_id": "67711a8ce31abaee76b100be",
+      "title": "agejrsod",
+      "content": "jfwELCA",
+      "author": "Ratnakar",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-12-29T09:46:52.530Z",
+      "updatedAt": "2024-12-29T10:49:14.808Z",
+      "__v": 20
+    },
+    {
+      "_id": "6771279b587da1862943287d",
+      "title": "fqdJ",
+      "content": "DJwxl",
+      "author": "Ratnakar",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-12-29T10:42:35.443Z",
+      "updatedAt": "2024-12-29T10:42:35.443Z",
+      "__v": 0
+    },
+    {
+      "_id": "677127d36fdae9e1309ec892",
+      "title": "ajcs",
+      "content": "vsjdc",
+      "author": "Ratnakar",
+      "authId": "676d4892f20fd2a77e0cf95f",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-12-29T10:43:31.952Z",
+      "updatedAt": "2024-12-29T10:43:31.952Z",
+      "__v": 0
+    },
+    {
+      "_id": "67712867ff81da386b9682a7",
+      "title": "ajgHXj",
+      "content": "EDBFX",
+      "author": "Ratnakar",
+      "authorId": "676d4892f20fd2a77e0cf95f",
+      "likes": [],
+      "comments": [],
+      "createdAt": "2024-12-29T10:45:59.760Z",
+      "updatedAt": "2024-12-29T10:50:56.713Z",
+      "__v": 2
+    }
+  ]
+}
    ### TOKEN VERIFICATION API
       - <https://e-commerce-8xmf.onrender.com/api/v1/auth/verify-token>
       - <https://e-commerce-8xmf.onrender.com/api/v1/auth/validate-token>
