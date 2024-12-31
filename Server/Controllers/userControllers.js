@@ -143,13 +143,13 @@ export const login = async (req, res) => {
 }
 
 export const logout = async (req, res) => {
-    // res.clearCookie("token",
-    //   {
-    //     httpOnly: true,
-    //     secure: process.env.NODE_ENV === "production", // Match the secure flag
-    //     sameSite: process.env.NODE_ENV === "production" ? "none" : "strict", // Match sameSite flag
-    //   });
-    res.clearCookie("token");
+    res.clearCookie("token",
+      {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production", // Match the secure flag
+        sameSite: process.env.NODE_ENV === "production" ? "none" : "strict", // Match sameSite flag
+      });
+    // res.clearCookie("token");
     res.status(200).send({message: "User logged out successfully"});
 }
 
