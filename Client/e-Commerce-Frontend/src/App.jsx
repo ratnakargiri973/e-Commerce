@@ -20,11 +20,20 @@ import { AuthProvider } from './contexts/Auth.jsx';
 import ForgotPassword from './components/ForgotPassword.jsx';
 import VerifyOtp from './components/VerifyOtp.jsx';
 import Changepassword from './components/Changepassword.jsx';
+import CheckoutForm from './pages/CheckoutForm.jsx';
+import { loadStripe } from "@stripe/stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import OrderSuccess from './pages/OrderSuccess.jsx';
+
+// console.log(import.meta.env.VITE_PUBLISHABLE_KEY);
+const StripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
 
 function AppWrapper(){
   return (
     <CartProvider>
-      <First />
+      <Elements stripe={StripePromise}>
+          <First />
+      </Elements>
     </CartProvider>
   )
 }
@@ -120,6 +129,22 @@ function App() {
           element: (
             <ProtectedRoute>
               <AddBlog />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/checkout",
+          element: (
+            <ProtectedRoute>
+               <CheckoutForm />
+            </ProtectedRoute>
+          )
+        },
+        {
+          path: "/order-success",
+          element: (
+            <ProtectedRoute>
+              <OrderSuccess />
             </ProtectedRoute>
           )
         }

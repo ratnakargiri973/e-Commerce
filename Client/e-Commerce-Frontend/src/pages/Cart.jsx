@@ -1,16 +1,21 @@
 import React , {useEffect} from 'react'
 import useCart from '../hooks/useCart.jsx'
 import { LiaRupeeSignSolid } from "react-icons/lia";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ApplyCoupon from '../components/ApplyCoupon.jsx';
 
 function Cart() {
   const {cart, fetchCart, updateQuantity, removeFromCart } = useCart();
-
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchCart();
   }, []);
+
+
+  function proceedToCheckout() {
+    navigate("/checkout")
+  }
 
   if(!cart || cart?.items?.length === 0){
     return(
@@ -115,7 +120,7 @@ function Cart() {
               {Math.round(cart.totalAmount)}
             </span>
           </div>
-          <button className="w-full bg-blue-500 text-white py-2 rounded">
+          <button className="w-full bg-blue-500 text-white py-2 rounded" onClick={proceedToCheckout}>
             Proceed to Checkout
           </button>
         </div>

@@ -11,13 +11,16 @@ import couponRouter from './Routes/couponRoute.js';
 import blogRouter from './Routes/blogRoute.js';
 import brandRouter from './Routes/brandRoute.js';
 import categoryRouter from './Routes/categoryRoute.js';
+import paymentRouter from './Routes/paymentRoute.js';
+import orderRouter from './Routes/orderRoute.js';
 
 
 const PORT = process.env.PORT;
 
 const app = express();
 const corsOption = {
-    origin: process.env.FRONTEND_URL,
+    // origin: "http://localhost:5173",
+    origin:process.env.FRONTEND_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
@@ -38,6 +41,8 @@ app.use('/api/v1/coupon', couponRouter);
 app.use('/api/v1/blog', blogRouter);
 app.use('/api/v1/brand', brandRouter);
 app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/pay", paymentRouter);
+app.use("/api/v1/orders", orderRouter);
 
 await connectToDB();
 app.listen(PORT, () => {
