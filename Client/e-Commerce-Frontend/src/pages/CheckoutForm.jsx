@@ -44,7 +44,8 @@ function CheckoutForm() {
             payIntentId: result.paymentIntent._id,
         });
 
-        window.location.href = "/order-success";
+        // window.location.href = "/order-success";
+        navigate("/order-success");
        }
        } catch (error) {
         console.log(error);
