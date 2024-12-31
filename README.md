@@ -1,5 +1,8 @@
 # E-COMMERCE API
  [WEBSITE-HOSTED LINK](https://e-commerce-1-34e1.onrender.com/)
+
+  ### PAYMENT INTEGRATION
+      - <https://e-commerce-8xmf.onrender.com/api/v1/pay/create-payment-intent>
    ### USER API
    1. User Authentication
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/register>
@@ -17,6 +20,7 @@
    4. Wishlist
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/wishlist/add>
       - <https://e-commerce-8xmf.onrender.com/api/v1/user/wishlist/remove/:id>
+ 
   ### COUPON API
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/apply>
