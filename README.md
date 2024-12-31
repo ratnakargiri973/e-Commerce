@@ -25,6 +25,8 @@
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon/apply>
       - <https://e-commerce-8xmf.onrender.com/api/v1/coupon>
+  ### ORDER API
+      - <https://e-commerce-8xmf.onrender.com/api/v1/orders/create>
   ### CATEGORY API
       - <https://e-commerce-8xmf.onrender.com/api/v1/category/create>
       - <https://e-commerce-8xmf.onrender.com/api/v1/category>
