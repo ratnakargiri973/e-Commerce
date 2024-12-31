@@ -17,9 +17,7 @@ const PORT = process.env.PORT;
 
 const app = express();
 const corsOption = {
-    origin: process.env.NODE_ENV === "production"
-    ? "https://your-frontend-domain.com"
-    : process.env.FRONTEND_URL,
+    origin: process.env.FRONTEND_URL,
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
